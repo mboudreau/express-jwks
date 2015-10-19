@@ -6,6 +6,10 @@ var jwt = require('express-jwt'),
 	async = require('async');
 
 module.exports = function (options) {
+	if(!options) {
+		return new Error('Options not set');
+	}
+
 	if (jwksUtils.isJWK(options.secret)) {
 		options.secret = {keys: [options.secret]};
 	}

@@ -1,6 +1,6 @@
 {
   "name": "express-jwks",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "JWKs authentication middleware, based on express-jwt",
   "keywords": [
     "auth",
