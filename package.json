@@ -1,6 +1,6 @@
 {
   "name": "express-jwks",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "JWKs authentication middleware, based on express-jwt",
   "keywords": [
     "auth",
@@ -34,9 +34,9 @@
   "main": "./src/index.js",
   "dependencies": {
     "async": "^1.4.2",
-    "jwks-utils": "^1.0.5",
-    "pem-jwk": "^1.5.1",
-    "express-jwt": "^3.1.0"
+    "jwks-utils": "1.0.5",
+    "pem-jwk": "1.5.1",
+    "express-jwt": "3.1.0"
   },
   "devDependencies": {
     "mocha": "2.x.x"
