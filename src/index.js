@@ -6,7 +6,7 @@ var jwt = require('express-jwt'),
 	async = require('async');
 
 module.exports = function (options) {
-	if(!options) {
+	if (!options) {
 		return new Error('Options not set');
 	}
 
@@ -24,12 +24,16 @@ module.exports = function (options) {
 			async.some(pems, function (pem, callback) {
 				var copy = extend({}, options);
 				copy.secret = new Buffer(pem);
-				jwt(copy)(req, res, function (err) {
-					if (err) {
-						errors.push(err);
-					}
-					callback(err == undefined);
-				});
+				try {
+					jwt(copy)(req, res, function (err) {
+						if (err) {
+							errors.push(err);
+						}
+						callback(err == undefined);
+					});
+				} catch (err) {
+					errors.push(new Error('Error decrypting token `' + JSON.stringify(copy) + '`:\n' + err));
+				}
 			}, function (result) {
 				next(result ? undefined : errors.pop());
 			});
